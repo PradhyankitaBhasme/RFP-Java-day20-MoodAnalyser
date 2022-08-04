@@ -1,23 +1,21 @@
 package com.bridgelabz;
 
-import org.hamcrest.CoreMatchers;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.hamcrest.MatcherAssert.assertThat;
 
 public class MoodAnalyserTest {
     @Test
-    void testMoodAnalysis() {
-        MoodAnalyser moodAnalyser = new MoodAnalyser();
-        String mood = moodAnalyser.analyseMood("This is a sad message");
-        assertThat(mood, CoreMatchers.is("SAD"));
+    void givenSadMessage_ShouldReturnSAD() {
+        MoodAnalyser moodAnalyser = new MoodAnalyser("I am in sad mood");
+        String mood = moodAnalyser.analyseMood();
+        Assertions.assertEquals("SAD",mood);
     }
 
     @Test
-    void HappyMoods() {
-        MoodAnalyser moodAnalyser = new MoodAnalyser();
-        String mood = moodAnalyser.analyseMood("This is a happy message");
-        assertThat(mood, CoreMatchers.is("HAPPY"));
+    void givenAnyMessage_ShouldReturnHAPPY() {
+        MoodAnalyser moodAnalyser = new MoodAnalyser("I am in any mood");
+        String mood = moodAnalyser.analyseMood();
+        Assertions.assertEquals("HAPPY",mood);
     }
 
 }
